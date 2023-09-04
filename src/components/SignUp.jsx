@@ -1,4 +1,3 @@
-export default SignUp;
 
 import { useFormik } from "formik";
 import React, { useState } from "react";
@@ -154,4 +153,4 @@ const Signup = () => {
   );
 };
 
-export default SignUp;
+export default Signup;
