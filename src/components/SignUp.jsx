@@ -81,8 +81,14 @@ const Signup = () => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: "-100%" }}
       transition={{ duration: 0.3, type: "spring", stiffness: 50, damping: 10 }}
+      style={{backgroundImage: `url('/SignUpBgImg.jpeg')`,
+      backgroundSize: 'cover',
+      paddingTop: '80px',
+      minHeight: '100vh'
+       }}
     >
-      <div className="w-25">
+     
+      <div className="w-25"  >
         <div className="card">
           <div className="card-body">
             <h3 className="text-center">Signup Form</h3>
@@ -124,22 +130,7 @@ const Signup = () => {
                 onChange={signupForm.handleChange}
                 value={signupForm.values.password}
               />
-
-              <label htmlFor="">Age</label>
-              <span style={{ color: "red", fontSize: "0.7em", marginLeft: 10 }}>
-                {signupForm.errors.age}
-              </span>
-              <input
-                type="number"
-                className="form-control mb-3"
-                name="age"
-                onChange={signupForm.handleChange}
-                value={signupForm.values.age}
-              />
-
-              <input type="file" onChange={uploadFile} />
-
-              <button
+              <button 
                 disabled={signupForm.isSubmitting}
                 className="btn btn-primary w-100 mt-5"
               >

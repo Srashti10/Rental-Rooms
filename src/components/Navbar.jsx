@@ -1,53 +1,69 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import useUserContext from './UserContext';
 
 const Navbar = () => {
+  const [currentuser, setCurrentuser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
+  const { loggedIn, logout } = useUserContext();
+
+  const showLoginOptions = () => {
+    if (currentuser !== null || loggedIn) {
+      return (
+        <>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/profile">
+              Profile
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <button onClick={logout} className="btn btn-danger">
+              Logout
+            </button>
+          </li>
+
+        </>);
+    } else {
+      return <>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/signup">
+            SignUP
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/login">
+            Login
+          </NavLink>
+        </li>
+      </>
+    }
+  }
   return (
     <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" >
-        <div className='container'>
-        <NavLink class="navbar-brand" to="#"><img style={{ width: "50px", height: "50px" }}
-          src="https://m.economictimes.com/thumb/msid-57220384,width-1200,height-900,resizemode-4,imgsize-86728/here-are-5-apps-to-help-you-find-a-room-house-to-rent.jpg"
+      <div className='container'>
+        <NavLink class="navbar-brand" to="#"><img style={{ width: "45px", height: "45px", borderRadius:'25px'}}
+          src="https://media1.thehungryjpeg.com/thumbs2/ori_3807385_nxxi2d8hk9w2dz16c0tphdxvmv3g0l880021pv04_monogram-rr-logo-design.jpg"
           alt="" /></NavLink>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <NavLink className="navbar-brand" to="/">
-          Home
+        <NavLink className="navbar-brand font-weight-bolder" to="/">
+          RoomieRentals
         </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
+        
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item ">
-              <NavLink className="nav-link" to="signup">
-                SignUp
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="login">
-                Login
-              </NavLink>
-            </li>
-
-            <li className="nav-item">
-              <NavLink className="nav-link" to="addrentproperty">
-                Add Rent Property
-              </NavLink>
-            </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="browsespace">
                 Browse Space
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="addrentproperty">
+                Add Rent Property
               </NavLink>
             </li>
             <li className="nav-item">
@@ -55,11 +71,12 @@ const Navbar = () => {
                 Manage Space
               </NavLink>
             </li>
+            {showLoginOptions()}
           </ul>
 
         </div>
-    </div>
-      </nav>
+      </div>
+    </nav>
 
   )
 }

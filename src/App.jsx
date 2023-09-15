@@ -9,6 +9,8 @@ import AddRentProperty from './components/AddRentProperty';
 import BrowseSpace from './components/BrowseSpace';
 import ManageSpace from './components/ManageSpaces';
 import { UserProvider } from './components/UserContext';
+import UserAuth from './components/UserAuth';
+import Profile from './components/Profile';
 
 
 
@@ -25,7 +27,8 @@ function App() {
             <Route element={<Login />} path='login' />
             <Route element={<AddRentProperty />} path='addrentproperty' />
             <Route element={<BrowseSpace />} path='browsespace' />
-            <Route element={<ManageSpace />} path='managespace' />
+            <Route element={<Profile />} path='profile' />
+            <Route element={ <UserAuth> <ManageSpace /> </UserAuth> } path='managespace' />
           </Routes>
         </UserProvider>
       </BrowserRouter>

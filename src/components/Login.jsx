@@ -73,7 +73,7 @@ const Login = () => {
       exit={{opacity: 0, x: '-100%'}}
       transition={{duration: 0.3, type: 'spring', stiffness: 50, damping: 10}}
     >
-   <section className="vh-100" style={{ backgroundColor: "#9A616D" }}>
+   <section className="vh-100" style={{ backgroundColor: "#9A616D", marginTop:'25px' }}>
   <div className="container py-5 h-100 m-auto">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col col-xl-10">
@@ -89,57 +89,51 @@ const Login = () => {
             </div>
             <div className="col-md-6 col-lg-7 d-flex align-items-center">
               <div className="card-body p-4 p-lg-5 text-black">
-                <form>
+                
                   <div className="d-flex align-items-center mb-3 pb-1">
-                    <i
-                      className="fas fa-cubes fa-2x me-3"
-                      style={{ color: "#ff6219" }}
-                    />
+
                     <span className="h1 fw-bold mb-0">RoomieRentals</span>
                   </div>
                   <h5
                     className="fw-normal mb-3 pb-3"
                     style={{ letterSpacing: 1 }}
                   >
-                    Sign into your account
+                    Login to your account
                   </h5>
-                  <div className="form-outline mb-4">
+                  <form onSubmit={loginForm.handleSubmit}>
+            
+                  <label className="form-label" htmlFor="form2Example17">
+                      Email address
+                    </label>
                     <input
                       type="email"
                       id="form2Example17"
                       className="form-control form-control-lg"
-                    />
-                    <label className="form-label" htmlFor="form2Example17">
-                      Email address
-                    </label>
-                  </div>
-                  <div className="form-outline mb-4">
-                    <input
-                      type="password"
-                      id="form2Example27"
-                      className="form-control form-control-lg"
-                      name="email-address"
+                      name="email"
+                      onChange={loginForm.handleChange} 
                       value={loginForm.values.email}
-                      onChange={loginForm.handleChange}
                     />
-                    </div>
+                
+
                     <label className="form-label" htmlFor="form2Example27">
                       Password
                     </label>
-                    <div className="form-outline mb-4">
+                    
                     <input
                       type="password"
                       id="form2Example27"
                       className="form-control form-control-lg"
                       name="password"
-                      value={loginForm.values.password}
                       onChange={loginForm.handleChange}
+                      value={loginForm.values.password}
                     />
-                  </div>
+                  
                   <div className="pt-1 mb-4">
                     <button
+                       disabled={loginForm.isSubmitting}
                       className="btn btn-dark btn-lg btn-block"
-                      type="button"
+                    
+
                     >
                       Login
                     </button>
