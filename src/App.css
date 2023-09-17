@@ -98,3 +98,11 @@ body{margin-top:20px;
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   }
+
+
+
+ /* Swiper CSS */
+ .swiper {
+  width: 1300px;
+  height: 500px;
+}

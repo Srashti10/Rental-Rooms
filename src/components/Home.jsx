@@ -1,4 +1,14 @@
 import React from 'react'
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+// import Swiper and modules styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+
+
+
 
 const Home = () => {
   return (
@@ -22,7 +32,50 @@ const Home = () => {
       </div>
 
       {/* section2 */}
- 
+
+      <Swiper
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: false,
+        }}
+        pagination={true}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-4.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-6.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-7.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-8.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="https://swiperjs.com/demos/images/nature-9.jpg" alt="" />
+        </SwiperSlide>
+      </Swiper>
 
       {/* section3 */}
       <div className=' ' style={{
@@ -69,6 +122,53 @@ const Home = () => {
         </div>
       </div>
     </div>
+
+    {/* footer */}
+    <footer className="bg-light text-center text-lg-start">
+  {/* Grid container */}
+  <div className="container p-4">
+    {/*Grid row*/}
+    <div className="row">
+      {/*Grid column*/}
+      <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 className="text-uppercase">Footer text</h5>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque
+          ea quis molestias. Fugiat pariatur maxime quis culpa corporis vitae
+          repudiandae aliquam voluptatem veniam, est atque cumque eum delectus
+          sint!
+        </p>
+      </div>
+      {/*Grid column*/}
+      {/*Grid column*/}
+      <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 className="text-uppercase">Footer text</h5>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque
+          ea quis molestias. Fugiat pariatur maxime quis culpa corporis vitae
+          repudiandae aliquam voluptatem veniam, est atque cumque eum delectus
+          sint!
+        </p>
+      </div>
+      {/*Grid column*/}
+    </div>
+    {/*Grid row*/}
+  </div>
+  {/* Grid container */}
+  {/* Copyright */}
+  <div
+    className="text-center p-3"
+    style={{ color: 'black', backgroundColor: 'gray' }}
+  >
+    © 2020 Copyright:
+    <a className="text-dark" href="https://mdbootstrap.com/">
+      MDBootstrap.com
+    </a>
+  </div>
+  {/* Copyright */}
+</footer>
+
+
 
     
 
