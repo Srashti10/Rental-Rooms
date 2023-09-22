@@ -1,18 +1,20 @@
 import React from 'react'
-import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 // import Swiper and modules styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Link } from 'react-router-dom';
+
 
 
 
 
 const Home = () => {
   return (
-    <div>
+    <div style={{ backgroundImage: `url('https://tse1.mm.bing.net/th?id=OIP.22E1NsdkOM3ooOXQw2qx9wHaEK&pid=Api&P=0&h=220')`,
+    backgroundSize: 'cover'
+    }}>
       <div className='d-flex justify-content-between' >
       <div className='align-items-center' style={{marginTop:'100px'}}>
         <h1 className='text-center' 
@@ -33,49 +35,7 @@ const Home = () => {
 
       {/* section2 */}
 
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-        }}
-        pagination={true}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" alt="" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" alt="" />
-        </SwiperSlide>
-      </Swiper>
+     
 
       {/* section3 */}
       <div className=' ' style={{
@@ -124,31 +84,31 @@ const Home = () => {
     </div>
 
     {/* footer */}
-    <footer className="bg-light text-center text-lg-start">
+    <footer style={{ color: 'white'}} className=" bg-dark text-center text-lg-start">
   {/* Grid container */}
   <div className="container p-4">
     {/*Grid row*/}
     <div className="row">
       {/*Grid column*/}
       <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 className="text-uppercase">Footer text</h5>
+        <h5 className="text-uppercase">Are You Home Owner?</h5>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque
-          ea quis molestias. Fugiat pariatur maxime quis culpa corporis vitae
-          repudiandae aliquam voluptatem veniam, est atque cumque eum delectus
-          sint!
+         If you are a home owner and searching for Tenants for renting your home, then 
+         this is the right platfotrm for you. Here you can list your property and get your 
+         perfect tenants.
         </p>
+        <Link to ='addrentproperty' style={{height: '50px', width: '150px', borderRadius: '10px',backgroundColor: 'lightgrey' }}
+         className='btn text-bold'>Add Your Property</Link>
       </div>
       {/*Grid column*/}
       {/*Grid column*/}
       <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 className="text-uppercase">Footer text</h5>
+        <h5 className="text-uppercase">Searching For Home?</h5>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque
-          ea quis molestias. Fugiat pariatur maxime quis culpa corporis vitae
-          repudiandae aliquam voluptatem veniam, est atque cumque eum delectus
-          sint!
+          If you are searching for a home , then here you can get a number of options 
+          to choose a perfect place for you to live. All you have to do here is click and pick.
         </p>
+        <button style={{height: '50px', width: '150px', borderRadius: '10px'}}>Search For House</button>
       </div>
       {/*Grid column*/}
     </div>
@@ -158,11 +118,11 @@ const Home = () => {
   {/* Copyright */}
   <div
     className="text-center p-3"
-    style={{ color: 'black', backgroundColor: 'gray' }}
+    style={{ color: 'black', backgroundColor: 'lightgrey' }}
   >
-    © 2020 Copyright:
+    © 2023 Copyright:
     <a className="text-dark" href="https://mdbootstrap.com/">
-      MDBootstrap.com
+      Roomierentals.com
     </a>
   </div>
   {/* Copyright */}

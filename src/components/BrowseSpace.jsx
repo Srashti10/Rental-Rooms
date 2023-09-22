@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const BrowseSpace = () => {
 
@@ -21,31 +22,36 @@ const BrowseSpace = () => {
 
   const displaySpaces = () => {
     return spaceList.map((space) => {
-      return <div style={{marginTop: '80px'}}>
-        <div className="col-md-3">
-        <div className="card">
-          <div className="card-body">
-            <h3>{space.propertyname}</h3>
-            <h5>{space.propertytype}</h5>
-            <h5>{space.facilities}</h5>
-            <h5>{space.rentprice}</h5>
-            <h5>{space.address}</h5>
-            <h5>{space.image}</h5>
-            
+      return <div className="col-md-3 mt-5" >
+          <div className="card">
+            <img src={'http://localhost:5000/' + space.image} alt="" />
+            <div className="card-body">
+              <h3>{space.propertyname}</h3>
+              <h5>{space.propertytype}</h5>
+              {/* <h5>{space.facilities}</h5>
+              <h5>{space.rentprice}</h5>*/
+                <h5>{space.address}</h5>}
+              {/* <h5>{space.image}</h5> */}
+              <Link className='btn bg-danger' to={'/rentdetails/' + space._id}>ViewDetails</Link>
+            </div>
           </div>
         </div>
-      </div>
-      </div>
-    })
+        
+      })
   }
+
 
   return (
     <div>
       <div className='container'>
-        {displaySpaces()}
+        <div className='row'>
+
+          {displaySpaces()}
+        </div>
       </div>
     </div>
   )
 }
 
-export default BrowseSpace;
+
+  export default BrowseSpace;

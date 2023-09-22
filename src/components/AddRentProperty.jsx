@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react'
 import { motion } from "framer-motion";
+import Swal from "sweetalert2";
 
 const AddRentProperty = () => {
   const [PropImg, setPropImg] = useState("");
@@ -15,7 +16,7 @@ const AddRentProperty = () => {
     },
 
   onSubmit: async (values, { resetForm, setSubmitting }) => {
-    values.avatar = PropImg;
+    values.image = PropImg;
 
     console.log(values);
     setSubmitting(true);
@@ -46,6 +47,8 @@ const AddRentProperty = () => {
 
     console.log(res.status);
 
+    
+
     if (res.status === 200) {
       console.log("File uploaded successfully");
     } else {
@@ -63,7 +66,7 @@ const AddRentProperty = () => {
     style={{ paddingTop: '40px',backgroundImage: `url('/propbgimg2.jpg')`,
     backgroundSize: 'cover',  minHeight: '100vh'
     }}>
-      <div className='w-50  m-auto mt-5 '>
+      <div className='w-50  m-auto mt-3 '>
         <div className='card'>
           <div className='card-body'>
             <h3 className='text-center'>Add Property for Rent</h3>
