@@ -21,10 +21,7 @@ const RentDetails = () => {
   const displayRentDetails = () => {
     if (rentData !== null) {
       return (
-        <div style={{
-          backgroundImage: `url(/pngtreeimg.jpg)`,
-          backgroundSize: 'cover',
-        }}>
+        <div >
         <div style={{marginTop: '80px'}} >
           <div className="card w-50 m-auto">
           <div className="card-body ">
@@ -46,10 +43,17 @@ const RentDetails = () => {
     }
   };
 
-  return <div className="mt-5">
+  return <div style={{
+    backgroundImage: `url('/pngtreeimg.jpg')`,
+    backgroundSize: 'cover',
+    minHeight: '90vh',
+   
+  }}>
+    <div  className="mt-0">
     <div className="container">
       {displayRentDetails()}
     </div>
+    </div> 
   </div>;
 };
 

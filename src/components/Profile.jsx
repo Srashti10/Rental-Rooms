@@ -1,6 +1,61 @@
-import React from 'react'
+import { useFormik } from 'formik';
+import React, { useState } from 'react'
+import Swal from 'sweetalert2';
+
+
+  
 
 const Profile = () => {
+
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')))
+
+   // Initializing formik
+ const profileForm = useFormik({
+  initialValues: {
+    email : "",
+    name : "",
+    password : "",
+    age : "",
+    avatar : "",
+  },
+  onSubmit : async ( values, {resetForm} ) => {
+    console.log(values);
+
+    const res = await fetch('http://localhost:5000/user/update/'+currentUser._id, {
+      method: 'PUT',
+      body: JSON.stringify(values),
+      headers: {
+        'Content-Type' : 'application/json'
+      }
+    });
+
+    console.log(res.status);
+
+    if(res.status === 200){
+      Swal.fire({
+        icon : 'success',
+        title : 'Nice!',
+        text : 'Profile Updated 😎'
+      });
+
+      const data = await res.json();
+      console.log(data);
+      sessionStorage.setItem('user', JSON.stringify(data) );
+      // setLoggedIn(true);
+      resetForm();
+
+    }else{
+      Swal.fire({
+        icon : 'error',
+        title : 'Error',
+        text : 'Something went wrong'
+      })
+    }
+    }
+
+    })
+
+    // write code to submit form to server
   return (
     <div style={{marginTop: '100px'}}>
         <div className="container">
@@ -12,7 +67,7 @@ const Profile = () => {
         <hr />
       </div>
       {/* Form START */}
-      <form className="file-upload">
+      <form className="file-upload" onSubmit={profileForm.handleSubmit}>
         <div className="row mb-5 gx-5">
           {/* Contact detail */}
           <div className="col-xxl-8 mb-5 mb-xxl-0">
@@ -21,26 +76,18 @@ const Profile = () => {
                 <h4 className="mb-4 mt-0"> Personal detail</h4>
                 {/* First Name */}
                 <div className="col-md-6">
-                  <label className="form-label">First Name *</label>
+                  <label className="form-label">Name *</label>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control"              
                     placeholder=""
                     aria-label="First name"
-                    defaultValue="Scaralet"
+                    id='name'
+                    onChange={profileForm.handleChange}
+                    value={profileForm.values.name}
                   />
                 </div>
-                {/* Last name */}
-                <div className="col-md-6">
-                  <label className="form-label">Last Name *</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder=""
-                    aria-label="Last name"
-                    defaultValue="Doe"
-                  />
-                </div>
+               
                 {/* Phone number */}
                 <div className="col-md-6">
                   <label className="form-label">Mobile number *</label>
@@ -49,7 +96,9 @@ const Profile = () => {
                     className="form-control"
                     placeholder=""
                     aria-label="Mobile number"
-                    defaultValue="9876543210"
+                    
+                    onChange={profileForm.handleChange}
+                    value={profileForm.values.mobilenumber}
                   />
                 </div>
                 
@@ -60,9 +109,12 @@ const Profile = () => {
                   </label>
                   <input
                     type="email"
+                    placeholder=""
                     className="form-control"
-                    id="inputEmail4"
-                    defaultValue="example@homerealty.com"
+                    id="email"
+                    aria-label="Email"
+                    onChange={profileForm.handleChange}
+                    value={profileForm.values.email}
                   />
                 </div>
                 {/* Address */}
@@ -74,6 +126,8 @@ const Profile = () => {
                     placeholder=""
                     aria-label="Address"
                     defaultValue="123, Street2, Anywhere"
+                    onChange={profileForm.handleChange}
+                    value={profileForm.values.address}
                   />
                 </div>
               </div>{" "}
@@ -91,7 +145,7 @@ const Profile = () => {
                     <i className="fas fa-fw fa-user position-absolute top-50 start-50 translate-middle text-secondary" />
                   </div>
                   {/* Button */}
-                  <input type="file" id="customFile" name="file" hidden="" />
+                  <input type="file" id="customFile" name="file" hidden=""    />
                   <label
                     className="btn btn-success-soft btn-block"
                     htmlFor="customFile"
@@ -101,8 +155,9 @@ const Profile = () => {
                   <button type="button" className="btn btn-danger-soft">
                     Remove
                   </button>
+              
                   {/* Content */}
-                  <p className="text-muted mt-3 mb-0">
+                  <p className="text-muted mt-3 ">
                     <span className="me-1">Note:</span>Minimum size 300px x
                     300px
                   </p>
@@ -113,11 +168,11 @@ const Profile = () => {
         </div>{" "}
         {/* Row END */}
         {/* button */}
-        <div className="gap-3 d-md-flex justify-content-md-end text-center">
-          <button type="button" className="btn btn-danger btn-lg">
-            Delete profile
-          </button>
-          <button type="button" className="btn btn-primary btn-lg">
+        <div className="mt-2 d-md-flex justify-content-md-center text-center">
+          
+          <button 
+          disabled={profileForm.isSubmitting}
+          type="submit" className="btn btn-primary btn-lg">
             Update profile
           </button>
         </div>

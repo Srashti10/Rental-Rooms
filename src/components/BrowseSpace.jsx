@@ -24,7 +24,7 @@ const BrowseSpace = () => {
     return spaceList.map((space) => {
       return <div className="col-md-3 mt-5" >
           <div className="card">
-            <img src={'http://localhost:5000/' + space.image} alt="" />
+            <img style={{width: '255px', height: '150px'}} src={'http://localhost:5000/' + space.image} alt="" />
             <div className="card-body">
               <h3>{space.propertyname}</h3>
               <h5>{space.propertytype}</h5>
