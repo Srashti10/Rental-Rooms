@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 const ManageUser = () => {
 
@@ -63,13 +64,25 @@ const ManageUser = () => {
     
 
   return (
-    <div>
-        <h1 className='text-center fw-bold'>Manage User Data</h1>
+    <motion.div className='pt-5'
+    initial={{ opacity: 0, x: "100%" }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: "-100%" }}
+    transition={{ duration: 0.3, type: "spring", stiffness: 50, damping: 10 }}
+    style={{
+        backgroundImage: `url('ManageSpaceBG.jpg')`,
+        backgroundSize: 'cover',
+        minHeight: '100vh'
+      }}>
+        <h1 className='text-center fw-bold '
+        style={{
+            color: 'black', fontSize: '50px', fontWeight: 'bold', marginBottom: '20px'
+        }}>Manage Property Data</h1>
         <hr />
         <div className='container'>
             {displayUserData()}
         </div>
-    </div>
+    </motion.div>
   )
 }
 

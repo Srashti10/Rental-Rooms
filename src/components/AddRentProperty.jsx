@@ -28,6 +28,20 @@ const AddRentProperty = () => {
           "Content-Type": "application/json",
         },
       });
+
+      if(res.status === 200){
+        Swal.fire({
+          icon : 'success',
+          title : 'Nice!',
+          text : 'Property Added Successfully.😎'
+        });
+      }else{
+        Swal.fire({
+          icon : 'error',
+          title : 'Error',
+          text : 'Something went wrong'
+        })
+      }
     }
     })
 
@@ -47,31 +61,34 @@ const AddRentProperty = () => {
 
     console.log(res.status);
 
+   
+
     
 
-    if (res.status === 200) {
-      console.log("File uploaded successfully");
-    } else {
-      console.log("File upload failed");
-    }
-  };
+  //   if (res.status === 200) {
+  //     console.log("File uploaded successfully");
+  //   } else {
+  //     console.log("File upload failed");
+  //   }
+   };
   
 
   return (
-    <motion.div className="bg d-flex justify-content-center align-items-center"
+    <motion.div className=" align-items-center"
     initial={{ opacity: 0, x: "100%" }}
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: "-100%" }}
     transition={{ duration: 0.3, type: "spring", stiffness: 50, damping: 10 }}
-    style={{ paddingTop: '40px',backgroundImage: `url('/propbgimg2.jpg')`,
-    backgroundSize: 'cover',  minHeight: '100vh'
+    style={{paddingTop: '50px', backgroundImage: `url('propbgimg.jpg')`,
+    backgroundSize: '100vw',  minHeight: '100vh', paddingBottom: '30px', width: '100vw'
     }}>
+    <h1 className='text-center' 
+       style={{color: 'black', fontSize: '50px', fontWeight: 'bold', marginBottom: '20px'}}>Add Property for Rent</h1>
+     
       <div className='w-50  m-auto mt-3 '>
         <div className='card'>
           <div className='card-body'>
-            <h3 className='text-center'>Add Property for Rent</h3>
-            <hr />
-            <form onSubmit={propertyForm.handleSubmit}>
+            <form  onSubmit={propertyForm.handleSubmit}>
               <label htmlFor="">Property Name</label>
               <input
                type="text"
@@ -115,6 +132,7 @@ const AddRentProperty = () => {
               <input type="file" onChange={uploadFile} />
               <button
                 disabled={propertyForm.isSubmitting}
+                type="submit"
                 className="btn btn-primary w-100 mt-5"
               >
                 Submit

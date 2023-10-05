@@ -5,15 +5,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
-
+// https://tse1.mm.bing.net/th?id=OIP.22E1NsdkOM3ooOXQw2qx9wHaEK&pid=Api&P=0&h=220
 
 
 
 const Home = () => {
   return (
-    <div style={{ backgroundImage: `url('https://tse1.mm.bing.net/th?id=OIP.22E1NsdkOM3ooOXQw2qx9wHaEK&pid=Api&P=0&h=220')`,
-    backgroundSize: 'cover'
+    <motion.div
+    initial={{ opacity: 0, x: "100%" }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: "-100%" }}
+    transition={{ duration: 0.3, type: "spring", stiffness: 50, damping: 10 }}
+    style={{ backgroundImage: `url(https://i.pinimg.com/236x/7f/6d/f6/7f6df61a48cc607d091ec27247091f58.jpg)`,
+    backgroundSize: '100vw',
+    backgroundRepeat: 'no-repeat'
     }}>
       <div className='d-flex justify-content-between' >
       <div className='align-items-center' style={{marginTop:'100px'}}>
@@ -132,7 +139,7 @@ const Home = () => {
 
     
 
-  </div>
+  </motion.div>
   )
 }
 

@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
+import { motion } from "framer-motion";
 
 
   
@@ -11,13 +12,7 @@ const Profile = () => {
 
    // Initializing formik
  const profileForm = useFormik({
-  initialValues: {
-    email : "",
-    name : "",
-    password : "",
-    age : "",
-    avatar : "",
-  },
+  initialValues: currentUser,
   onSubmit : async ( values, {resetForm} ) => {
     console.log(values);
 
@@ -57,13 +52,27 @@ const Profile = () => {
 
     // write code to submit form to server
   return (
-    <div style={{marginTop: '100px'}}>
-        <div className="container">
+    <motion.div
+    initial={{ opacity: 0, x: "100%" }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: "-100%" }}
+    transition={{ duration: 0.3, type: "spring", stiffness: 50, damping: 10 }}
+    style={{
+    paddingTop: '50px',  
+    paddingBottom: '50px',
+    backgroundImage: `url(Profileebg.jpg)`,
+    backgroundSize: '100vw',
+    backgroundRepeat: 'no-repeat'
+
+     
+
+    }}>
+    <div className="container">
   <div className="row">
     <div className="col-12">
       {/* Page title */}
       <div className="my-5">
-        <h3>My Profile</h3>
+        <h1>My Profile</h1>
         <hr />
       </div>
       {/* Form START */}
@@ -74,31 +83,31 @@ const Profile = () => {
             <div className="bg-secondary-soft px-4 py-5 rounded">
               <div className="row g-3">
                 <h4 className="mb-4 mt-0"> Personal detail</h4>
-                {/* First Name */}
+                {/*  Name */}
                 <div className="col-md-6">
                   <label className="form-label">Name *</label>
                   <input
                     type="text"
                     className="form-control"              
                     placeholder=""
-                    aria-label="First name"
+                    aria-label="name"
                     id='name'
                     onChange={profileForm.handleChange}
                     value={profileForm.values.name}
                   />
                 </div>
                
-                {/* Phone number */}
+                {/* Age */}
                 <div className="col-md-6">
-                  <label className="form-label">Mobile number *</label>
+                  <label className="form-label">Age *</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     placeholder=""
-                    aria-label="Mobile number"
-                    
+                    aria-label="age"
+                    id='age'
                     onChange={profileForm.handleChange}
-                    value={profileForm.values.mobilenumber}
+                    value={profileForm.values.age}
                   />
                 </div>
                 
@@ -115,19 +124,6 @@ const Profile = () => {
                     aria-label="Email"
                     onChange={profileForm.handleChange}
                     value={profileForm.values.email}
-                  />
-                </div>
-                {/* Address */}
-                <div className="col-md-6">
-                  <label className="form-label">Address*</label>
-                  <input
-                    type="text-area"
-                    className="form-control"
-                    placeholder=""
-                    aria-label="Address"
-                    defaultValue="123, Street2, Anywhere"
-                    onChange={profileForm.handleChange}
-                    value={profileForm.values.address}
                   />
                 </div>
               </div>{" "}
@@ -182,7 +178,7 @@ const Profile = () => {
   </div>
 </div>
 
-    </div>
+    </motion.div>
   )
 }
 
